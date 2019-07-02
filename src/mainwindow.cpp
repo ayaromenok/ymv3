@@ -65,11 +65,20 @@ MainWindow::createCentralWidget()
     QWidget     *wdCentral = new QWidget(this);
     QGridLayout *loutCentral = new QGridLayout(wdCentral);
 
-    View* _view = new View(this);
-    loutCentral->addWidget(new QGroupBox(tr("Front"), this), 0, 0);
-    loutCentral->addWidget(new QGroupBox(tr("Side"), this), 0, 1);
-    loutCentral->addWidget(new QGroupBox(tr("Top"), this), 1, 0);
-    loutCentral->addWidget(_view, 1, 1);
+    View* _viewP = new View(this);
+    _viewP->setCamPersp();
+    View* _viewF = new View(this);
+    _viewF->setCamFront();
+    View* _viewT = new View(this);
+    _viewT->setCamTop();
+    View* _viewL = new View(this);
+    _viewL->setCamLeft();
+
+    //loutCentral->addWidget(new QGroupBox(tr("Front"), this), 0, 0);
+    loutCentral->addWidget(_viewF, 0, 0);
+    loutCentral->addWidget(_viewL, 0, 1);
+    loutCentral->addWidget(_viewT, 1, 0);
+    loutCentral->addWidget(_viewP, 1, 1);
     wdCentral->setLayout(loutCentral);
 
     setCentralWidget(wdCentral);

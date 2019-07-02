@@ -18,6 +18,10 @@ public:
 signals:
 
 public slots:
+    void                            setCamPersp();
+    void                            setCamFront();
+    void                            setCamTop();
+    void                            setCamLeft();
 
 private:
     void                            addTorusTo(Qt3DCore::QEntity *entity);
