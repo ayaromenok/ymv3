@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include <QtWidgets>
+#include "view.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -62,11 +63,13 @@ void
 MainWindow::createCentralWidget()
 {
     QWidget     *wdCentral = new QWidget(this);
-    QGridLayout *loutCentral = new QGridLayout(this);
-    loutCentral->addWidget(new QGroupBox(tr("Top"), this), 0, 0);
-    loutCentral->addWidget(new QGroupBox(tr("Persp"), this), 1, 0);
-    loutCentral->addWidget(new QGroupBox(tr("Front"), this), 0, 1);
-    loutCentral->addWidget(new QGroupBox(tr("Side"), this), 1, 1);
+    QGridLayout *loutCentral = new QGridLayout(wdCentral);
+
+    View* _view = new View(this);
+    loutCentral->addWidget(new QGroupBox(tr("Front"), this), 0, 0);
+    loutCentral->addWidget(new QGroupBox(tr("Side"), this), 0, 1);
+    loutCentral->addWidget(new QGroupBox(tr("Top"), this), 1, 0);
+    loutCentral->addWidget(_view, 1, 1);
     wdCentral->setLayout(loutCentral);
 
     setCentralWidget(wdCentral);
