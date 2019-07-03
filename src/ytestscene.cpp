@@ -23,7 +23,7 @@ YTestScene::addTorusTo(Qt3DCore::QEntity *entity) {
     torusMesh->setSlices(16);
 
     Qt3DCore::QTransform *torusTransform = new Qt3DCore::QTransform();
-    torusTransform->setScale3D(QVector3D(2.0f, 1.0f, 0.5f));
+    torusTransform->setScale3D(QVector3D(1.0f, 1.0f, 0.5f));
     //torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 1.0f, 0.0f), 25.0f));
     //torusTransform->setTranslation(QVector3D(5.0f, 0.0f, 0.0f));
     //torusTransform->setScale(2.0f);

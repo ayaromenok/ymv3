@@ -14,7 +14,7 @@ View::View(QWidget *parent) : QWidget(parent) {
     QWidget *container = QWidget::createWindowContainer(_view);
     QSize scrnSize = _view->screen()->size();
     qDebug() << "screensize" << scrnSize;
-    container->setMinimumSize(QSize(640,480));
+    container->setMinimumSize(QSize(640,450));
     container->setMaximumSize(scrnSize);
 
     QVBoxLayout* loutV = new QVBoxLayout(this);
@@ -35,7 +35,7 @@ View::setCamPersp() {
     Qt3DRender::QCamera *cameraEntity = _view->camera();
 
     cameraEntity->lens()->setPerspectiveProjection(45.0f, 16.0f/9.0f, 0.1f, 1000.0f);
-    cameraEntity->setPosition(QVector3D(0, 0, 20.0f));
+    cameraEntity->setPosition(QVector3D(3.0f, 5.0f, 5.0f));
     cameraEntity->setUpVector(QVector3D(0, 1, 0));
     cameraEntity->setViewCenter(QVector3D(0, 0, 0));
 }
@@ -44,7 +44,7 @@ void
 View::setCamFront() {
     Qt3DRender::QCamera *cameraEntity = _view->camera();
 
-    cameraEntity->lens()->setOrthographicProjection(-16.0f, 19.0f, -9.0f, 9.0f, 0.1f, 1000.0f);
+    cameraEntity->lens()->setOrthographicProjection(-8.0f, 8.0f, -4.5f, 4.5f, 0.1f, 1000.0f);
     cameraEntity->setPosition(QVector3D(0, 0, 20.0f));
     cameraEntity->setUpVector(QVector3D(0, 1, 0));
     cameraEntity->setViewCenter(QVector3D(0, 0, 0));
@@ -53,7 +53,7 @@ View::setCamFront() {
 void
 View::setCamTop() {
     Qt3DRender::QCamera *cameraEntity = _view->camera();
-    cameraEntity->lens()->setOrthographicProjection(-16.0f, 19.0f, -9.0f, 9.0f, 0.1f, 1000.0f);
+    cameraEntity->lens()->setOrthographicProjection(-8.0f, 8.0f, -4.5f, 4.5f, 0.1f, 1000.0f);
     cameraEntity->setPosition(QVector3D(0, 20.0f, 0));
     cameraEntity->setUpVector(QVector3D(0, 1, 0));
     cameraEntity->setViewCenter(QVector3D(0, 0, 0));
@@ -62,7 +62,7 @@ View::setCamTop() {
 void
 View::setCamLeft() {
     Qt3DRender::QCamera *cameraEntity = _view->camera();
-    cameraEntity->lens()->setOrthographicProjection(-16.0f, 19.0f, -9.0f, 9.0f, 0.1f, 1000.0f);
+    cameraEntity->lens()->setOrthographicProjection(-8.0f, 8.0f, -4.5f, 4.5f, 0.1f, 1000.0f);
     cameraEntity->setPosition(QVector3D(20.0f, 0, 0));
     cameraEntity->setUpVector(QVector3D(0, 1, 0));
     cameraEntity->setViewCenter(QVector3D(0, 0, 0));
