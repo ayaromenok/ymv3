@@ -25,6 +25,7 @@ View::View(QWidget *parent) : QWidget(parent) {
 
     _root = new Qt3DCore::QEntity();
     addTorusTo(_root);
+    addConeTo(_root);
     _view->setRootEntity(_root);
 
 }
@@ -41,10 +42,10 @@ View::addTorusTo(Qt3DCore::QEntity *entity) {
     torusMesh->setSlices(16);
 
     Qt3DCore::QTransform *torusTransform = new Qt3DCore::QTransform();
-    //torusTransform->setScale(2.0f);
     torusTransform->setScale3D(QVector3D(2.0f, 1.0f, 0.5f));
-    torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 1.0f, 0.0f), 25.0f));
+    //torusTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0.0f, 1.0f, 0.0f), 25.0f));
     //torusTransform->setTranslation(QVector3D(5.0f, 0.0f, 0.0f));
+    //torusTransform->setScale(2.0f);
 
     Qt3DExtras::QPhongMaterial *torusMat = new Qt3DExtras::QPhongMaterial();
     torusMat->setDiffuse(QColor(QRgb(0x0FFF0F)));
@@ -54,6 +55,28 @@ View::addTorusTo(Qt3DCore::QEntity *entity) {
     torusEntity->addComponent(torusTransform);
 }
 
+void
+View::addConeTo(Qt3DCore::QEntity *entity) {
+
+    Qt3DCore::QEntity *coneEntity = new Qt3DCore::QEntity(entity);
+    Qt3DExtras::QConeMesh *coneMesh = new Qt3DExtras::QConeMesh();
+
+    coneMesh->setTopRadius(0.1f);
+    coneMesh->setBottomRadius(1.0f);
+    coneMesh->setLength(3);
+    coneMesh->setRings(40);
+    coneMesh->setSlices(16);
+
+    Qt3DCore::QTransform *coneTransform = new Qt3DCore::QTransform();
+    coneTransform->setTranslation(QVector3D(0.0f, 0.0f, -2.0f));
+
+    Qt3DExtras::QPhongMaterial *coneMat = new Qt3DExtras::QPhongMaterial();
+    coneMat->setDiffuse(QColor(QRgb(0x0F0FFF)));
+
+    coneEntity->addComponent(coneMesh);
+    coneEntity->addComponent(coneMat);
+    coneEntity->addComponent(coneTransform);
+}
 void
 View::setCamPersp() {
     Qt3DRender::QCamera *cameraEntity = _view->camera();
