@@ -9,6 +9,9 @@ namespace Qt3DExtras {
 namespace Qt3DCore {
     class QEntity;
 };
+
+class YTestScene;
+
 class View : public QWidget
 {
     Q_OBJECT
@@ -24,10 +27,10 @@ public slots:
     void                            setCamLeft();
 
 private:
-    void                            addTorusTo(Qt3DCore::QEntity *entity);
-    void                            addConeTo(Qt3DCore::QEntity *entity);
+
     Qt3DExtras::Qt3DWindow          *_view;
     Qt3DCore::QEntity               *_root;
+    YTestScene                      *_sceneTest;
 };
 
 #endif // VIEW_H
