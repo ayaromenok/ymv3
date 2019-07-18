@@ -23,12 +23,19 @@ View::View(QWidget *parent) : QWidget(parent) {
 
     Qt3DInput::QInputAspect *input = new Qt3DInput::QInputAspect();
     _view->registerAspect(input);
-
-    _root = new Qt3DCore::QEntity();
-    _sceneTest = new YTestScene(_root);
-    _view->setRootEntity(_root);
 }
 
+void
+View::setRootEntity(Qt3DCore::QEntity *root){
+    if(root) {
+        _view->setRootEntity(root);
+        qDebug() << "OK";
+     }
+    else {
+        qDebug() << "wrong";
+    }
+
+}
 
 void
 View::setCamPersp() {

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 class QSettings;
+class YTestScene;
 
 class MainWindow : public QMainWindow
 {
@@ -18,6 +19,7 @@ private:
     void createCentralWidget();
 
     QSettings   *_settings;
+    YTestScene  *_testScene;
 };
 
 #endif // MAINWINDOW_H

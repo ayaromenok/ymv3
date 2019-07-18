@@ -1,6 +1,11 @@
 #include "mainwindow.h"
+
 #include <QtWidgets>
+#include <Qt3DCore>
+
 #include "view.h"
+#include "ytestscene.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -65,13 +70,20 @@ MainWindow::createCentralWidget()
     QWidget     *wdCentral = new QWidget(this);
     QGridLayout *loutCentral = new QGridLayout(wdCentral);
 
+    Qt3DCore::QEntity *root = new Qt3DCore::QEntity();
+    _testScene = new YTestScene(root);
+
     View* _viewP = new View(this);
+    _viewP->setRootEntity(root);
     _viewP->setCamPersp();
     View* _viewF = new View(this);
+    _viewF->setRootEntity(root);
     _viewF->setCamFront();
     View* _viewT = new View(this);
+    _viewT->setRootEntity(root);
     _viewT->setCamTop();
     View* _viewL = new View(this);
+    _viewL->setRootEntity(root);
     _viewL->setCamLeft();
 
     //loutCentral->addWidget(new QGroupBox(tr("Front"), this), 0, 0);

@@ -25,6 +25,7 @@ public slots:
     void                            setCamFront();
     void                            setCamTop();
     void                            setCamLeft();
+    void                            setRootEntity(Qt3DCore::QEntity *root);
 
 private:
 
